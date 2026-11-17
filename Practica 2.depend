@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1794901657 source:c:\users\djime\downloads\practica 2 - diego jimenez\practica-2\main.cpp
+	<iostream>
+
+1794903609 source:c:\users\djime\downloads\practica 2 - diego jimenez\practica-2\src\arbol.cpp
+	"arbol.h"
+
+1794903639 c:\users\djime\downloads\practica 2 - diego jimenez\practica-2\include\arbol.h
+	<iostream>
+
