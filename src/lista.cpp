@@ -10,38 +10,47 @@ Lista::~Lista()
         aux = cabeza;
         cabeza = cabeza->siguiente;
         delete aux;
+        len--;
     }
     actual = NULL;
 }
 
-void Lista::insertarNodo(int v) {
+int Lista::getLong()
+{
+    return len;
+}
+
+void Lista::insertarNodo(venta v) {
     pnodo aux;
 
     if (listaVacia())
     {
         cabeza = new Nodo(v, NULL);
         final=cabeza;
+        len = 1;
     }
     else
     {
         aux= new Nodo(v,NULL);
         final->siguiente=aux;
         final=aux;
+        len++;
     }
 }
 
-void Lista::borrarNodo(int v) {
+void Lista::borrarNodo(string id) {
     pnodo anterior;
 
     actual = cabeza;
 
-    while (actual->valor!=v && (actual->siguiente)!=NULL)
+    while (actual->valor.get_id_venta()!=id && (actual->siguiente)!=NULL)
     {
         anterior=actual;
         actual=actual->siguiente;
     }
 
-    if (actual->valor == v){ //comprobación de que está v en la lista
+    if (actual->valor.get_id_venta() == id)
+    { //comprobacin de que est v en la lista
         if(actual==cabeza)
             cabeza = actual->siguiente;
         else
@@ -54,11 +63,13 @@ void Lista::borrarNodo(int v) {
         }
         actual->siguiente=NULL;
         delete actual;
+        len--;
     }
 }
 
 
-bool Lista::listaVacia(){
+bool Lista::listaVacia()
+{
     return cabeza == NULL;
 }
 
@@ -85,7 +96,7 @@ bool Lista::esActual()
     return actual != NULL;
 }
 
-int Lista::valorActual()
+venta Lista::valorActual()
 {
     return actual->valor;
 }
@@ -98,7 +109,7 @@ void Lista::recorrerLista()
 
     while(aux)
     {
-        cout << aux->valor << "-> ";
+        cout << "|\t \t" << aux->valor.get_id_centro() << "|\t" << aux->valor.get_id_venta() << "|\t" << aux->valor.get_cod_pizza() << "|\t" << aux->valor.cat_to_string() << "|\t" << aux->valor.get_unidades() << "|\t" << aux->valor.get_fecha_venta() << "|\n";
         aux = aux->siguiente;
     }
     cout << endl;

@@ -2,20 +2,20 @@
 #define ARBOL_H
 
 #include <iostream>
-
+#include "Centro.h"
 
 class Nodo
 {
     private:
         // Miembros:
-        int dato;
+        Centro dato;
         Nodo *izquierdo;
         Nodo *derecho;
         friend class ArbolABB;
 
     public:
         // Constructor:
-        Nodo(const int dat, Nodo *izq=NULL, Nodo *der=NULL) :
+        Nodo(Centro& dat, Nodo *izq=NULL, Nodo *der=NULL) :
             dato(dat), izquierdo(izq), derecho(der) {}
 
 };
@@ -30,30 +30,30 @@ class ArbolABB
         int altura;
 
     public:
-        // Constructor y destructor básicos:
+        // Constructor y destructor bï¿½sicos:
         ArbolABB() : raiz(NULL), actual(NULL) {}
         ~ArbolABB();
-         // Insertar en árbol ordenado:
-        void Insertar(const int dat);
-        // Borrar un elemento del árbol:
-        void Borrar(const int dat);
-        // Función de búsqueda:
-        bool Buscar(const int dat);
-        // Comprobar si el árbol está vacío:
+         // Insertar en ï¿½rbol ordenado:
+        void Insertar(Centro& dat);
+        // Borrar un elemento delrbol:
+        void Borrar(Centro& dat);
+        // Funcin de bsqueda:
+        bool Buscar(Centro& dat);
+        // Comprobar si elrbol est vaco:
         bool Vacio(Nodo *r);
         // Comprobar si es un nodo hoja:
         bool EsHoja(Nodo *r);
-        // Contar número de nodos:
+        // Contar nmero de nodos:
         const int NumeroNodos();
         const int AlturaArbol();
         // Calcular altura de un int:
-        int Altura(const int dat);
+        int Altura(Centro& dat);
         // Moverse al nodo raiz:
         void Raiz();
-        // Aplicar una función a cada elemento del árbol:
-        void InOrden(void (*func)(int&), Nodo *nodo=NULL, bool r=true);
-        void PreOrden(void (*func)(int&), Nodo *nodo=NULL, bool r=true);
-        void PostOrden(void (*func)(int&), Nodo *nodo=NULL, bool r=true);
+        // Aplicar una funcin a cada elemento delrbol:
+        void InOrden(void (*func)(Centro&), Nodo *nodo=NULL, bool r=true);
+        void PreOrden(void (*func)(Centro&), Nodo *nodo=NULL, bool r=true);
+        void PostOrden(void (*func)(Centro&), Nodo *nodo=NULL, bool r=true);
 
     private:
         // Funciones auxiliares

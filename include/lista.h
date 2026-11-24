@@ -2,16 +2,17 @@
 #define LISTAS_H
 
 #include <iostream>
+#include <venta.h>
 
 class Nodo
 {
 private:
-    int valor;
+    venta valor;
     Nodo *siguiente;
     friend class Lista;
 
 public:
-    Nodo(int v, Nodo *sig = NULL)
+    Nodo(venta v, Nodo *sig = NULL)
     {
         valor = v;
         siguiente = sig;
@@ -23,22 +24,25 @@ class Lista
 {
 private:
     pnodo cabeza, actual, final;
+    int len;
 
 public:
     Lista()
     {
         cabeza = actual = final= NULL;
+        len = 0;
     }
     ~Lista();
 
-    void insertarNodo(int v);
-    void borrarNodo(int v);
+    int getLong();
+    void insertarNodo(venta v);
+    void borrarNodo(string id);
     bool listaVacia();
     void esCabeza();
     void esFinal();
     void esSiguiente();
     bool esActual();
-    int valorActual();
+    venta valorActual();
     void recorrerLista();
 
 };
